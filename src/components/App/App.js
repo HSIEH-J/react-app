@@ -2,14 +2,15 @@ import React from "react";
 import "./App.css";
 import Api from "../../util/Api";
 import GenerateBar from "../GenerateBar/GenerateBar";
-import GenerateResults from "../GenerateResults/GenerateResults";
+import ResultsList from "../ResultsList/ResultsList";
 
 class App extends React.Component {
   constructor (props) {
     super(props);
 
     this.state = {
-      generateResult: ""
+      generateResult: "",
+      resultsList: []
 
     };
 
@@ -20,6 +21,9 @@ class App extends React.Component {
     Api
       .generateShortUrl(data)
       .then((generateResult) => {
+        const results = this.state.resultsList;
+        results.push(generateResult);
+        this.setState({ resultsList: results });
         this.setState({ generateResult: generateResult });
       })
       .catch((e) => {
@@ -41,7 +45,8 @@ class App extends React.Component {
                 <th className="Item">Short Link</th>
                 <th className="Item">times</th>
               </tr>
-              <GenerateResults generateResult={this.state.generateResult} />
+              <ResultsList generateResult={this.state.generateResult}
+                           resultsList={this.state.resultsList}/>
             </table>
           </div>
         </div>
