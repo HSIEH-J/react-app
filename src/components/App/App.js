@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import Api from "../../util/Api";
+import Swal from "sweetalert2";
 import GenerateBar from "../GenerateBar/GenerateBar";
 import ResultsList from "../ResultsList/ResultsList";
 
