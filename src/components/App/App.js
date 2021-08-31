@@ -77,6 +77,7 @@ class App extends React.Component {
 
   render () {
     const cookieName = document.cookie.split("=");
+    console.log(cookieName);
     if (cookieName[0] === "user") {
       this.setState({ isAuthentication: true });
     }
