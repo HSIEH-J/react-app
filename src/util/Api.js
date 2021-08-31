@@ -4,8 +4,8 @@ const MySwal = withReactContent(Swal);
 
 class Api {
   constructor () {
-    this.API_HOST = "https://www.isho.xyz";
-    // this.API_HOST = "http://localhost:3000";
+    // this.API_HOST = "https://www.isho.xyz";
+    this.API_HOST = "http://localhost:3000";
   }
 
   async generateShortUrl (data) {
