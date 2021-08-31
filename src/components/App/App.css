@@ -33,8 +33,6 @@ h1 {
 
 .BarTitle {
   background-color: #dcdcdc;
-  border: 1px solid #dcdcdc;
-  border-radius: 3px;
 }
 
 .Bar {
@@ -46,7 +44,7 @@ h1 {
   padding: 0px;
 }
 
-th {
+.Bar th {
   width: 300px
 }
 

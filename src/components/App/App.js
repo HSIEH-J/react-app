@@ -32,9 +32,6 @@ class App extends React.Component {
         results.push(generateResult);
         this.setState({ resultsList: results });
         this.setState({ generateResult: generateResult });
-      })
-      .catch((e) => {
-        window.alert(e.message);
       });
   }
 
@@ -45,11 +42,6 @@ class App extends React.Component {
         console.log(response);
         this.setState({ isAuthentication: true });
         MySwal.fire("Sign Up Successfully!");
-      })
-      .catch((e) => {
-        window.alert(e.message);
-        console.log(JSON.parse(e.message));
-        console.log(e);
       });
   }
 
@@ -60,9 +52,6 @@ class App extends React.Component {
         console.log(response);
         this.setState({ isAuthentication: true });
         MySwal.fire("Log In Successfully!");
-      })
-      .catch((e) => {
-        window.alert(e.message);
       });
   }
 
@@ -73,9 +62,6 @@ class App extends React.Component {
         console.log(response);
         this.setState({ isAuthentication: false });
         MySwal.fire("Log Out Successfully!");
-      })
-      .catch((e) => {
-        window.alert(e.message);
       });
   }
 
