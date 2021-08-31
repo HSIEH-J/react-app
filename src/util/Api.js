@@ -1,10 +1,6 @@
 class Api {
-  constructor () {
-    this.API_HOST = "https://www.isho.xyz";
-  }
-
   async generateShortUrl (data) {
-    const response = await fetch(`${this.API_HOST}/link`, {
+    const response = await fetch("link", {
       body: JSON.stringify(data),
       headers: new Headers({
         "Content-Type": "application/json"
@@ -16,13 +12,12 @@ class Api {
   }
 
   async login (data) {
-    const response = await fetch(`${this.API_HOST}/login`, {
+    const response = await fetch("/login", {
       body: JSON.stringify(data),
       headers: new Headers({
         "Content-Type": "application/json"
       }),
-      method: "POST",
-      credentials: "include"
+      method: "POST"
     });
     const json = await response.json();
     return json;
