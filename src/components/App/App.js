@@ -48,7 +48,7 @@ class App extends React.Component {
       })
       .catch((e) => {
         window.alert(e.message);
-        console.log(e.message);
+        console.log(JSON.parse(e.message));
         console.log(e);
       });
   }
@@ -80,11 +80,6 @@ class App extends React.Component {
   }
 
   render () {
-    const cookieName = document.cookie.split("=");
-    console.log(cookieName);
-    if (cookieName[0] === "user") {
-      this.setState({ isAuthentication: true });
-    }
     return (
       <div>
         <h1>Short Links</h1>
