@@ -62,7 +62,7 @@ class App extends React.Component {
       });
   }
 
-  logOut (data) {
+  logOut () {
     Api
       .logOut()
       .then((response) => {
