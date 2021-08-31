@@ -62,7 +62,7 @@ class App extends React.Component {
       });
   }
 
-  logOut (data) {
+  logOut () {
     Api
       .logOut()
       .then((response) => {
@@ -76,6 +76,10 @@ class App extends React.Component {
   }
 
   render () {
+    const cookieName = document.cookie.split("=");
+    if (cookieName[0] === "user") {
+      this.setState({ isAuthentication: true });
+    }
     return (
       <div>
         <h1>Short Links</h1>

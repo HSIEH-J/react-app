@@ -53,7 +53,8 @@ class Api {
     return json;
   };
 
-  async logOut (data) {
+  async logOut () {
+    console.log("logOut");
     const response = await fetch(`${this.API_HOST}/logout`, {
       headers: new Headers({
         "Content-Type": "application/json"
