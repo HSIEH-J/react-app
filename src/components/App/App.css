@@ -22,7 +22,7 @@ h1 {
 .App {
   height: 100vh;
   width: 100vw;
-  background-image: url('./background.jpeg');
+  background-image: url('./background.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -31,10 +31,10 @@ h1 {
   color: #fff;
 }
 
-.App-playlist {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
+.BarTitle {
+  background-color: #dcdcdc;
+  border: 1px solid #dcdcdc;
+  border-radius: 3px;
 }
 
 .Bar {
