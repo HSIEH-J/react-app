@@ -44,9 +44,12 @@ class App extends React.Component {
       .then((response) => {
         console.log(response);
         this.setState({ isAuthentication: true });
+        MySwal.fire("Sign Up Successfully!");
       })
       .catch((e) => {
         window.alert(e.message);
+        console.log(e.message);
+        console.log(e);
       });
   }
 
@@ -56,6 +59,7 @@ class App extends React.Component {
       .then((response) => {
         console.log(response);
         this.setState({ isAuthentication: true });
+        MySwal.fire("Log In Successfully!");
       })
       .catch((e) => {
         window.alert(e.message);
