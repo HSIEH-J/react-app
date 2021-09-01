@@ -75,7 +75,11 @@ class App extends React.Component {
         this.setState({ isShowRedirectTime: true });
         const resultsList = this.state.resultsList;
         resultsList.forEach((ele) => {
+          console.log(ele);
+          console.log(id.id);
           if (ele.id === id.id) {
+            console.log(ele.id);
+            console.log(id.id);
             ele.status = "times";
             ele.render = response.times;
           }
