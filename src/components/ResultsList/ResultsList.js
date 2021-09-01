@@ -1,6 +1,6 @@
 import React from "react";
 import "./ResultsList.css";
-import witness from "./witness.png";
+// import witness from "./witness.png";
 
 class ResultsList extends React.Component {
   constructor (props) {
@@ -32,7 +32,7 @@ class ResultsList extends React.Component {
                     <a href={result.shortLink} target="_blank" rel="noreferrer">{result.shortLink}</a>
                 </td>
                 <td className="Item">
-                    <img src={witness} className="EyeImg" onClick={this.showRedirectTimes} id={result.id}/>
+                    <img src={result.render} className="EyeImg" onClick={this.showRedirectTimes} id={result.id}/>
                 </td>
               </tr>
             );
