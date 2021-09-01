@@ -75,6 +75,7 @@ class App extends React.Component {
         console.log(response);
         this.setState({ isShowRedirectTime: true });
         this.setState({ redirectTimes: response.times });
+        console.log(this.state.redirectTimes);
       });
   }
 

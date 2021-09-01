@@ -14,7 +14,7 @@ class ResultsList extends React.Component {
     const id = e.target.id;
     const data = { id: id };
     this.props.onRedirectTimes(data);
-    e.target.innerHTML = this.props.showTimesResult;
+    e.target.parentNode.innerHTML = this.props.showTimesResult;
   }
 
   render () {
