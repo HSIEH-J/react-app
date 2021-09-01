@@ -34,7 +34,6 @@ class App extends React.Component {
       .generateShortUrl(data)
       .then((generateResult) => {
         const results = this.state.resultsList;
-        // results.push(generateResult);
         results[generateResult.id] = generateResult;
         this.setState({ resultsList: results });
         this.setState({ generateResult: generateResult });
@@ -80,14 +79,6 @@ class App extends React.Component {
         const resultsList = this.state.resultsList;
         resultsList[id.data[0].id].status = "times";
         resultsList[id.data[0].id].render = response.data[0].times;
-        // resultsList.forEach((ele) => {
-        //   if (ele.id.toString() === id.id.toString()) {
-        //     console.log(ele.id);
-        //     console.log(id.id);
-        //     ele.status = "times";
-        //     ele.render = response.times;
-        //   }
-        // });
         this.setState({ resultsList: resultsList });
         const showTimesUrl = this.state.showTimesUrl;
         showTimesUrl.push({ id: id.data[0].id });
@@ -136,5 +127,3 @@ class App extends React.Component {
 }
 
 export default App;
-
-// <List UrlList={this.state.shortLinkResults}/>
