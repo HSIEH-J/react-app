@@ -7,7 +7,7 @@ const WebSocket = (props) => {
 
   const connectWebSocket = () => {
     setWs(webSocket("http://localhost:3000"));
-    ws.emit("test", props.url);
+    ws.emit("test", this.props.url);
   };
 
   useEffect(() => {
