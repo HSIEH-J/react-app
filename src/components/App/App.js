@@ -16,8 +16,7 @@ class App extends React.Component {
       generateResult: "",
       resultsList: [],
       isAuthentication: false,
-      isShowRedirectTimes: false,
-      redirectTimes: ""
+      isShowRedirectTimes: false
     };
 
     this.generate = this.generate.bind(this);
@@ -74,8 +73,15 @@ class App extends React.Component {
       .then((response) => {
         console.log(response);
         this.setState({ isShowRedirectTime: true });
-        this.setState({ redirectTimes: response.times });
-        console.log(this.state.redirectTimes);
+        const resultsList = this.state.resultsList;
+        resultsList.forEach((ele) => {
+          if (ele.id === id.id) {
+            ele.status = "times";
+            ele.render = response.times;
+          }
+        });
+        this.setState({ resultsList: resultsList });
+        console.log(resultsList);
       });
   }
 
@@ -99,8 +105,7 @@ class App extends React.Component {
               </tr>
               <ResultsList generateResult={this.state.generateResult}
                            resultsList={this.state.resultsList}
-                           onRedirectTimes={this.showRedirectTimes}
-                           showTimesResult={this.state.redirectTimes}/>
+                           onRedirectTimes={this.showRedirectTimes} />
             </table>
           </div>
         </div>

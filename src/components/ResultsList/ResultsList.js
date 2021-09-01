@@ -14,28 +14,44 @@ class ResultsList extends React.Component {
     const id = e.target.id;
     const data = { id: id };
     this.props.onRedirectTimes(data);
-    e.target.parentNode.innerHTML = this.props.showTimesResult;
   }
 
   render () {
     return (
       <div>
       {
-        this.props.resultsList.map(result => {
-          return (
-            <tr className="GenerateResults" key={result.id}>
-              <td className="Item">checkbox</td>
-              <td className="Item">
-                  <a href={result.url} target="_blank" rel="noreferrer">{result.url}</a>
-              </td>
-              <td className="Item">
-                  <a href={result.shortLink} target="_blank" rel="noreferrer">{result.shortLink}</a>
-              </td>
-              <td className="Item">
-                  <img src={witness} className="EyeImg" onClick={this.showRedirectTimes} id={result.id}/>
-              </td>
-            </tr>
-          );
+        this.props.resultsList.map((result) => {
+          if (result.status === "img") {
+            return (
+              <tr className="GenerateResults" key={result.id}>
+                <td className="Item">checkbox</td>
+                <td className="Item">
+                    <a href={result.url} target="_blank" rel="noreferrer">{result.url}</a>
+                </td>
+                <td className="Item">
+                    <a href={result.shortLink} target="_blank" rel="noreferrer">{result.shortLink}</a>
+                </td>
+                <td className="Item">
+                    <img src={witness} className="EyeImg" onClick={this.showRedirectTimes} id={result.id}/>
+                </td>
+              </tr>
+            );
+          } else {
+            return (
+              <tr className="GenerateResults" key={result.id}>
+                <td className="Item">checkbox</td>
+                <td className="Item">
+                    <a href={result.url} target="_blank" rel="noreferrer">{result.url}</a>
+                </td>
+                <td className="Item">
+                    <a href={result.shortLink} target="_blank" rel="noreferrer">{result.shortLink}</a>
+                </td>
+                <td className="Item">
+                    {result.times}
+                </td>
+              </tr>
+            );
+          }
         })
       }
       </div>
