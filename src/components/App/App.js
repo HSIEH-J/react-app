@@ -76,8 +76,8 @@ class App extends React.Component {
         const resultsList = this.state.resultsList;
         resultsList.forEach((ele) => {
           console.log(ele);
-          console.log(id.id);
-          console.log(ele.id);
+          console.log(typeof (id.id));
+          console.log(typeof (ele.id));
           if (ele.id === id.id) {
             console.log(ele.id);
             console.log(id.id);
