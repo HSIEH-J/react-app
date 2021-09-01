@@ -15,13 +15,16 @@ class App extends React.Component {
     this.state = {
       generateResult: "",
       resultsList: [],
-      isAuthentication: false
+      isAuthentication: false,
+      isShowRedirectTimes: false,
+      redirectTimes: ""
     };
 
     this.generate = this.generate.bind(this);
     this.register = this.register.bind(this);
     this.logIn = this.logIn.bind(this);
     this.logOut = this.logOut.bind(this);
+    this.showRedirectTimes = this.showRedirectTimes.bind(this);
   }
 
   generate (data) {
@@ -65,6 +68,16 @@ class App extends React.Component {
       });
   }
 
+  showRedirectTimes (id) {
+    Api
+      .showRedirectTimes(id)
+      .then((response) => {
+        console.log(response);
+        this.setState({ isShowRedirectTime: true });
+        this.setState({ redirectTimes: response.times });
+      });
+  }
+
   render () {
     return (
       <div>
@@ -84,7 +97,9 @@ class App extends React.Component {
                 <th className="Item">times</th>
               </tr>
               <ResultsList generateResult={this.state.generateResult}
-                           resultsList={this.state.resultsList}/>
+                           resultsList={this.state.resultsList}
+                           onRedirectTimes={this.showRedirectTimes}
+                           showTimesResult={this.state.redirectTimes}/>
             </table>
           </div>
         </div>

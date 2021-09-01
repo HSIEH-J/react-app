@@ -5,7 +5,7 @@ const MySwal = withReactContent(Swal);
 class Api {
   constructor () {
     // this.API_HOST = "https://www.isho.xyz";
-    this.API_HOST = "";
+    this.API_HOST = "http://localhost:3000";
   }
 
   async generateShortUrl (data) {
@@ -33,6 +33,21 @@ class Api {
     });
     if (response.status !== 200) {
       throw new Error(MySwal.fire("Please check email format or try another email..."));
+    }
+    const json = await response.json();
+    return json;
+  };
+
+  async showRedirectTimes (id) {
+    const response = await fetch(`${this.API_HOST}/times`, {
+      body: JSON.stringify(id),
+      headers: new Headers({
+        "Content-Type": "application/json"
+      }),
+      method: "POST"
+    });
+    if (response.status !== 200) {
+      throw new Error(MySwal.fire("Please try again..."));
     }
     const json = await response.json();
     return json;

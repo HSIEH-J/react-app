@@ -1,6 +1,5 @@
 import React from "react";
 import "./GenerateBar.css";
-import WebSocket from "../WebSocket/WebSocket";
 
 class GenerateBar extends React.Component {
   constructor (props) {
@@ -30,11 +29,10 @@ class GenerateBar extends React.Component {
     return (
           <div className="GenerateBar">
             <input placeholder="http://" onChange={this.handleTermChange} />
-            <WebSocket url={this.state.term}/>
+            <button className="GenerateButton" onClick={this.generateShortUrl}>Generate</button>
           </div>
     );
   }
 }
 
 export default GenerateBar;
-// <button className="GenerateButton" onClick={this.generateShortUrl}>Generate</button>
