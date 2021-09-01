@@ -81,7 +81,7 @@ class App extends React.Component {
           }
         });
         this.setState({ resultsList: resultsList });
-        console.log(resultsList);
+        console.log(this.state.resultsList);
       });
   }
 
