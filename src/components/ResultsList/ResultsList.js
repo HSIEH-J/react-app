@@ -12,7 +12,8 @@ class ResultsList extends React.Component {
   showRedirectTimes (e) {
     console.log(e.target.id);
     const id = e.target.id;
-    this.props.onRedirectTimes(id);
+    const data = { id: id };
+    this.props.onRedirectTimes(data);
     e.target.innerHTML = this.props.showTimesResult;
   }
 
