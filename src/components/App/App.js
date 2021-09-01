@@ -4,6 +4,7 @@ import Api from "../../util/Api";
 import Authentication from "../Authentication/Authentication";
 import GenerateBar from "../GenerateBar/GenerateBar";
 import ResultsList from "../ResultsList/ResultsList";
+import Header from "../Header/Header";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 const MySwal = withReactContent(Swal);
@@ -14,9 +15,10 @@ class App extends React.Component {
 
     this.state = {
       generateResult: "",
-      resultsList: [],
+      resultsList: {},
       isAuthentication: false,
-      isShowRedirectTimes: false
+      isShowRedirectTimes: false,
+      showTimesUrl: []
     };
 
     this.generate = this.generate.bind(this);
@@ -24,6 +26,7 @@ class App extends React.Component {
     this.logIn = this.logIn.bind(this);
     this.logOut = this.logOut.bind(this);
     this.showRedirectTimes = this.showRedirectTimes.bind(this);
+    this.updateRedirectTimes = this.updateRedirectTimes.bind(this);
   }
 
   generate (data) {
@@ -31,7 +34,8 @@ class App extends React.Component {
       .generateShortUrl(data)
       .then((generateResult) => {
         const results = this.state.resultsList;
-        results.push(generateResult);
+        // results.push(generateResult);
+        results[generateResult.id] = generateResult;
         this.setState({ resultsList: results });
         this.setState({ generateResult: generateResult });
       });
@@ -68,25 +72,41 @@ class App extends React.Component {
   }
 
   showRedirectTimes (id) {
+    console.log(this.state.resultsList);
     Api
       .showRedirectTimes(id)
       .then((response) => {
-        console.log(response);
-        this.setState({ isShowRedirectTime: true });
+        this.setState({ isShowRedirectTimes: true });
         const resultsList = this.state.resultsList;
-        resultsList.forEach((ele) => {
-          console.log(ele);
-          console.log(typeof (id.id));
-          console.log(typeof (ele.id));
-          if (ele.id === id.id) {
-            console.log(ele.id);
-            console.log(id.id);
-            ele.status = "times";
-            ele.render = response.times;
-          }
+        resultsList[id.data[0].id].status = "times";
+        resultsList[id.data[0].id].render = response.data[0].times;
+        // resultsList.forEach((ele) => {
+        //   if (ele.id.toString() === id.id.toString()) {
+        //     console.log(ele.id);
+        //     console.log(id.id);
+        //     ele.status = "times";
+        //     ele.render = response.times;
+        //   }
+        // });
+        this.setState({ resultsList: resultsList });
+        const showTimesUrl = this.state.showTimesUrl;
+        showTimesUrl.push({ id: id.data[0].id });
+        this.setState({ showTimesUrl: showTimesUrl });
+        console.log(showTimesUrl);
+      });
+  }
+
+  updateRedirectTimes () {
+    console.log(this.state.showTimesUrl);
+    const data = { data: this.state.showTimesUrl };
+    Api
+      .showRedirectTimes(data)
+      .then((response) => {
+        const resultsList = this.state.resultsList;
+        response.data.forEach((ele) => {
+          resultsList[ele.id].render = ele.times;
         });
         this.setState({ resultsList: resultsList });
-        console.log(this.state.resultsList);
       });
   }
 
@@ -102,12 +122,8 @@ class App extends React.Component {
           <GenerateBar onGenerate={this.generate}/>
           <div className="Content-List">
             <table className="Bar">
-              <tr className="BarTitle">
-                <th className="Item">Manipulate</th>
-                <th className="Item">URL</th>
-                <th className="Item">Short Link</th>
-                <th className="Item">times</th>
-              </tr>
+              <Header showRedirectTimes={this.state.isShowRedirectTimes}
+                      onUpdate={this.updateRedirectTimes}/>
               <ResultsList generateResult={this.state.generateResult}
                            resultsList={this.state.resultsList}
                            onRedirectTimes={this.showRedirectTimes} />
