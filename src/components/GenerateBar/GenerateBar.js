@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
-import webSocket from "socket.io-client";
+import React from "react";
 import "./GenerateBar.css";
-const [ws, setWs] = useState(null);
+import WebSocket from "../WebSocket/WebSocket";
 
 class GenerateBar extends React.Component {
   constructor (props) {
@@ -15,25 +14,6 @@ class GenerateBar extends React.Component {
     this.generateShortUrl = this.generateShortUrl.bind(this);
   }
 
-  connectWebSocket () {
-    setWs(webSocket("http://localhost:3000"));
-  }
-
-  useEffectSocket (initWebSocket) {
-    useEffect(() => {
-      if (ws) {
-        console.log("success connect...");
-      }
-      initWebSocket();
-    }, [ws]);
-  }
-
-  initWebSocket () {
-    ws.on("test", test => {
-      console.log(test);
-    });
-  }
-
   // get input value
   handleTermChange (event) {
     this.setState({ term: event.target.value });
@@ -43,8 +23,6 @@ class GenerateBar extends React.Component {
   generateShortUrl () {
     const url = { url: this.state.term };
     // eslint-disable-next-line react/prop-types
-    this.useEffectSocket();
-    this.connectWebSocket();
     this.props.onGenerate(url);
   }
 
@@ -52,10 +30,11 @@ class GenerateBar extends React.Component {
     return (
           <div className="GenerateBar">
             <input placeholder="http://" onChange={this.handleTermChange} />
-            <button className="GenerateButton" onClick={this.generateShortUrl}>Generate</button>
+            <WebSocket url={this.state.term}/>
           </div>
     );
   }
 }
 
 export default GenerateBar;
+// <button className="GenerateButton" onClick={this.generateShortUrl}>Generate</button>
