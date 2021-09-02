@@ -17,7 +17,6 @@ class Header extends React.Component {
     if (this.props.showRedirectTimes === false) {
       return (
             <tr className="BarTitle">
-              <th className="Item">Manipulate</th>
               <th className="Item">URL</th>
               <th className="Item">Short Link</th>
               <th className="Item">times</th>
@@ -26,7 +25,6 @@ class Header extends React.Component {
     } else {
       return (
             <tr className="BarTitle">
-              <th className="Item">Manipulate</th>
               <th className="Item">URL</th>
               <th className="Item">Short Link</th>
               <th className="Item">
