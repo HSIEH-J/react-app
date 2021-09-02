@@ -3,8 +3,8 @@ import "./App.css";
 import Api from "../../util/Api";
 import Authentication from "../Authentication/Authentication";
 import GenerateBar from "../GenerateBar/GenerateBar";
-import ResultsList from "../ResultsList/ResultsList";
-import Header from "../Header/Header";
+// import ResultsList from "../ResultsList/ResultsList";
+import Table from "../Table/Table";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 const MySwal = withReactContent(Swal);
@@ -14,7 +14,6 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      generateResult: "",
       resultsList: {},
       isAuthentication: false,
       isShowRedirectTimes: false,
@@ -36,7 +35,6 @@ class App extends React.Component {
         const results = this.state.resultsList;
         results[generateResult.id] = generateResult;
         this.setState({ resultsList: results });
-        this.setState({ generateResult: generateResult });
       });
   }
 
@@ -112,13 +110,10 @@ class App extends React.Component {
                           authentication={this.state.isAuthentication}/>
           <GenerateBar onGenerate={this.generate}/>
           <div className="Content-List">
-            <table className="Bar">
-              <Header showRedirectTimes={this.state.isShowRedirectTimes}
-                      onUpdate={this.updateRedirectTimes}/>
-              <ResultsList generateResult={this.state.generateResult}
-                           resultsList={this.state.resultsList}
-                           onRedirectTimes={this.showRedirectTimes} />
-            </table>
+              <Table isShowRedirectTimes={this.state.isShowRedirectTimes}
+                      onUpdate={this.updateRedirectTimes}
+                      resultsList={this.state.resultsList}
+                      onRedirectTimes={this.showRedirectTimes}/>
           </div>
         </div>
       </div>

@@ -1,0 +1,11 @@
+table {
+    border-collapse: separate;
+}
+
+.Table {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    margin: 0px auto;
+    padding: 0px;
+}

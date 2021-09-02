@@ -1,0 +1,32 @@
+.RefreshImg {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    padding-left: 5%;
+}
+
+.Title {
+    background-color: #a9a9a9;
+    color: white;
+}
+
+th {
+    height: 35px;
+}
+
+
+.UrlItem {
+    width: 500px;
+}
+
+.LinkItem {
+    width: 350px;
+}
+
+.TimeItem {
+    display: flex;
+    justify-content: center;
+    width: 300px;
+    align-items: center;
+}
+

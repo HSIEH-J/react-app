@@ -23,12 +23,13 @@ class GenerateBar extends React.Component {
     const url = { url: this.state.term };
     // eslint-disable-next-line react/prop-types
     this.props.onGenerate(url);
+    document.getElementById("ImportUrl").value = "";
   }
 
   render () {
     return (
           <div className="GenerateBar">
-            <input placeholder="http://" onChange={this.handleTermChange} />
+            <input placeholder="http://" onChange={this.handleTermChange} id="ImportUrl"/>
             <button className="GenerateButton" onClick={this.generateShortUrl}>Generate</button>
           </div>
     );

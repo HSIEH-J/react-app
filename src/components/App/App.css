@@ -31,26 +31,9 @@ h1 {
   color: #fff;
 }
 
-.BarTitle {
-  background-color: #dcdcdc;
-}
 
-.Bar {
-  text-align: center;
-  font-family: 'Poppins', sans-serif;
-  color: #2f4f4f;
-  font-weight: bold;
-  margin: 0px auto;
-  padding: 0px;
-}
 
-.Bar th {
-  width: 300px
-}
 
-/* .BarItem {
-  flex-grow: 1;
-} */
 
 @media only screen and (max-width: 1020px) {
   .App-playlist {

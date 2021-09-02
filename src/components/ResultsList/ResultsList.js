@@ -17,48 +17,37 @@ class ResultsList extends React.Component {
   }
 
   render () {
-    const list = [];
-    for (const n in this.props.resultsList) {
-      list.push(this.props.resultsList[n]);
+    const result = this.props.result;
+    console.log(result);
+    if (result.status === "img") {
+      return (
+        <tr className="ResultRow" key={result.id}>
+          <td className="Item">
+              <a href={result.url} target="_blank" rel="noreferrer">{result.url}</a>
+          </td>
+          <td className="Item">
+              <a href={result.shortLink} target="_blank" rel="noreferrer">{result.shortLink}</a>
+          </td>
+          <td className="Item">
+              <img src={result.render} className="EyeImg" onClick={this.showRedirectTimes} id={result.id}/>
+          </td>
+        </tr>
+      );
+    } else {
+      return (
+        <tr className="ResultRow" key={result.id}>
+          <td className="Item">
+              <a href={result.url} target="_blank" rel="noreferrer">{result.url}</a>
+          </td>
+          <td className="Item">
+              <a href={result.shortLink} target="_blank" rel="noreferrer">{result.shortLink}</a>
+          </td>
+          <td className="Item">
+              {result.render.toString()}
+          </td>
+        </tr>
+      );
     }
-    return (
-      <div>
-        {
-          list.map((result) => {
-            if (result.status === "img") {
-              return (
-                        <tr className="GenerateResults" key={result.id}>
-                          <td className="Item">
-                              <a href={result.url} target="_blank" rel="noreferrer">{result.url}</a>
-                          </td>
-                          <td className="Item">
-                              <a href={result.shortLink} target="_blank" rel="noreferrer">{result.shortLink}</a>
-                          </td>
-                          <td className="Item">
-                              <img src={result.render} className="EyeImg" onClick={this.showRedirectTimes} id={result.id}/>
-                          </td>
-                        </tr>
-              );
-            } else {
-              return (
-                        <tr className="GenerateResults" key={result.id}>
-                          <td className="Item">
-                              <a href={result.url} target="_blank" rel="noreferrer">{result.url}</a>
-                          </td>
-                          <td className="Item">
-                              <a href={result.shortLink} target="_blank" rel="noreferrer">{result.shortLink}</a>
-                          </td>
-                          <td className="Item">
-                              {result.render.toString()}
-                          </td>
-                        </tr>
-              );
-            }
-          })
-        }
-
-      </div>
-    );
   }
 }
 
