@@ -29,9 +29,6 @@ class ResultsList extends React.Component {
               return (
                         <tr className="GenerateResults" key={result.id}>
                           <td className="Item">
-                            <input type="checkbox"/>
-                          </td>
-                          <td className="Item">
                               <a href={result.url} target="_blank" rel="noreferrer">{result.url}</a>
                           </td>
                           <td className="Item">
@@ -45,7 +42,6 @@ class ResultsList extends React.Component {
             } else {
               return (
                         <tr className="GenerateResults" key={result.id}>
-                          <td className="Item">checkbox</td>
                           <td className="Item">
                               <a href={result.url} target="_blank" rel="noreferrer">{result.url}</a>
                           </td>
