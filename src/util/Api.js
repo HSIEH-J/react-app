@@ -5,7 +5,6 @@ const MySwal = withReactContent(Swal);
 class Api {
   constructor () {
     this.API_HOST = "https://www.isho.xyz";
-    // this.API_HOST = "http://localhost:3000";
   }
 
   async generateShortUrl (data) {
@@ -17,7 +16,11 @@ class Api {
       method: "POST"
     });
     if (response.status !== 200) {
-      throw new Error(MySwal.fire("Please try again..."));
+      throw new Error(MySwal.fire(
+        "Oops! seems something went wrong...",
+        "Please Try Again Later.",
+        "warning"
+      ));
     }
     const json = await response.json();
     return json;
@@ -32,7 +35,12 @@ class Api {
       method: "POST"
     });
     if (response.status !== 200) {
-      throw new Error(MySwal.fire("Please check email format or try another email..."));
+      console.log("123");
+      throw new Error(MySwal.fire(
+        "Please Check Again.",
+        "Wrong Email Format Or Try Another Email",
+        "warning"
+      ));
     }
     const json = await response.json();
     return json;
@@ -47,7 +55,11 @@ class Api {
       method: "POST"
     });
     if (response.status !== 200) {
-      throw new Error(MySwal.fire("Please try again..."));
+      throw new Error(MySwal.fire(
+        "Oops! seems something went wrong...",
+        "Please Try Again Later.",
+        "warning"
+      ));
     }
     const json = await response.json();
     return json;
@@ -62,7 +74,11 @@ class Api {
       method: "POST"
     });
     if (response.status !== 200) {
-      throw new Error(MySwal.fire("Please check email format or try another password..."));
+      throw new Error(MySwal.fire(
+        "Please Check Again.",
+        "Wrong Email Format Or Password",
+        "warning"
+      ));
     }
     const json = await response.json();
     return json;
@@ -76,7 +92,11 @@ class Api {
       method: "GET"
     });
     if (response.status !== 200) {
-      throw new Error(MySwal.fire("Please try again..."));
+      throw new Error(MySwal.fire(
+        "Please Check Again.",
+        "Wrong Email Format Or Try Another Email",
+        "warning"
+      ));
     }
     const json = await response.json();
     return json;
