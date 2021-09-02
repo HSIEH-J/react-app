@@ -28,7 +28,9 @@ class ResultsList extends React.Component {
             if (result.status === "img") {
               return (
                         <tr className="GenerateResults" key={result.id}>
-                          <td className="Item">checkbox</td>
+                          <td className="Item">
+                            <input type="checkbox"/>
+                          </td>
                           <td className="Item">
                               <a href={result.url} target="_blank" rel="noreferrer">{result.url}</a>
                           </td>
